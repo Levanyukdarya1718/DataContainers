@@ -1,12 +1,12 @@
-#include <iostream>
+п»ї#include <iostream>
 using namespace std;
 #define tab "\t"
 class Element
 	
 {
 protected:
-	int Data;//значение элемента
-	Element* pNext; //указатель на следующий элемент
+	int Data;//Р·РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	Element* pNext; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 public:
 	Element(int Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
 	{
@@ -35,11 +35,11 @@ public:
 	//				Adinng elements
 	void push_front(int Data)
 	{
-		//1) Создаем новый элемент
+		//1) РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚
 		Element* New = new Element(Data);
-		//2) Включает новый элемент 
+		//2) Р’РєР»СЋС‡Р°РµС‚ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ 
 		New->pNext = Head;
-		//3) Переводи Голову на новый элемент:
+		//3) РџРµСЂРµРІРѕРґРё Р“РѕР»РѕРІСѓ РЅР° РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚:
 		Head = New;
 	}
 	void push_back(int Data)
@@ -103,11 +103,11 @@ public:
 	{
 		
 		cout << "Head:\t" << Head << endl;
-		Element* Temp = Head; //Temp - это итератор
+		Element* Temp = Head; //Temp - СЌС‚Рѕ РёС‚РµСЂР°С‚РѕСЂ
 		while (Temp)
 		{
 			cout << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
-			Temp = Temp->pNext; //Переход на следующий элемент
+			Temp = Temp->pNext; //РџРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌР»РµРјРµРЅС‚
 		}
 	}
 
@@ -117,7 +117,7 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int n;
-	cout << "Введите количество элементов"; cin >> n;
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ"; cin >> n;
 		ForwardList list;
 	for (int i = 0; i < n; i++)
 	{
@@ -133,11 +133,11 @@ void main()
 	list.pop_back();
 	list.print();
 	int position, value;
-	cout << "Введите позицию добавляемого элемента:"; cin>> position;
-	cout << "Введите значение добавляемого элемента:"; cin>> value;
+	cout << "Р’РІРµРґРёС‚Рµ РїРѕР·РёС†РёСЋ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:"; cin>> position;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:"; cin>> value;
 	list.insert(position, value);
 	list.print();
-	cout << "Введите позицию удаляемого элемента:"; cin >> position;
+	cout << "Р’РІРµРґРёС‚Рµ РїРѕР·РёС†РёСЋ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:"; cin >> position;
 	list.erase(position);
 	list.print();
 }
