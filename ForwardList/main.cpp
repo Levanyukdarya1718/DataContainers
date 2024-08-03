@@ -53,6 +53,51 @@ public:
 		Element* New = new Element(Data);
 		Temp->pNext = New;
 	}
+	void pop_front()
+	{
+		if (Head == nullptr)return;
+		Element* Remove = Head;
+		Head = Head->pNext;
+		delete Remove;
+
+
+	}
+	void pop_back()
+	{
+		if (Head->pNext == nullptr)return pop_front();
+		Element* Temp = Head;
+		while (Temp->pNext->pNext)Temp = Temp->pNext;
+		delete Temp->pNext;
+		Temp->pNext = nullptr;
+	}
+	void insert(int index, int Data)
+	{
+		if (index == 0)return push_front(Data);
+		Element* Temp = Head;
+		for(int i = 0; i < index - 1; i++)
+		{
+			
+			Temp = Temp->pNext;
+		}
+		if (Temp->pNext == nullptr) return;
+		Temp->pNext = new Element(Data, Temp->pNext);
+	}
+	void erase(int index)
+	{
+		if (index == 0)return pop_front();
+		Element* Temp = Head;
+		for(int i = 0; i < index - 1; i++)
+		{
+			
+			Temp = Temp->pNext;
+		}
+	
+		Element* Remove = Temp->pNext;
+		Temp->pNext = Temp->pNext->pNext;
+		delete Remove;
+	}
+
+		
 	//				Methods:
 	void print() const
 	{
@@ -83,4 +128,16 @@ void main()
 	list.print();
 	//list.push_back(123);
 	//list.print();
+	list.pop_front();
+	list.print();
+	list.pop_back();
+	list.print();
+	int position, value;
+	cout << "¬ведите позицию добавл€емого элемента:"; cin>> position;
+	cout << "¬ведите значение добавл€емого элемента:"; cin>> value;
+	list.insert(position, value);
+	list.print();
+	cout << "¬ведите позицию удал€емого элемента:"; cin >> position;
+	list.erase(position);
+	list.print();
 }
