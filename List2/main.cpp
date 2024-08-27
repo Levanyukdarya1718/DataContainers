@@ -49,11 +49,12 @@ public:
 		}
 
 		else
-		{
+		{/*
 			Element* New = new Element(Data);
 			New->pNext = Head;
 			Head->pPrev = New;
-			Head = New;
+			Head = New;*/
+			Head = Head->pPrev = new Element(Data, Head);
 		}
 		size++;
 	}
@@ -65,10 +66,11 @@ public:
 		}
 		else
 		{
-			Element* New = new Element(Data);
+			/*Element* New = new Element(Data);
 			New->pPrev = Tail;
 			Tail->pNext = New;
-			Tail = New;
+			Tail = New;*/
+			Tail = Tail->pNext = new Element(Data, nullptr, Tail);
 		}
 		size++;
 	}
@@ -103,6 +105,63 @@ public:
 			delete Tail->pNext;
 			Tail->pNext = nullptr;
 		}
+		size--;
+	}
+	void insert(int index, int Data)
+	{
+		Element* Temp;
+		if (index > size)return;
+		if (index == 0)return push_front(Data);
+		if (index == size)return push_back(Data);
+		if (index < size / 2)
+		{
+			Temp = Head;
+			for (int i = 0; i < index; i++)
+			{
+				Temp = Temp->pNext;
+			}
+		}
+		else
+		{
+			Temp = Tail;
+			for (int i = 0; i < size - index - 1; i++)
+			{
+				Temp = Temp->pPrev;
+			}
+		}
+		
+		Element* New = new Element(Data);
+		New->pNext = Temp;
+		New->pPrev = Temp->pPrev;
+		Temp->pPrev->pNext = New;
+		Temp->pPrev = New;
+		size++;
+	}
+	void erase(int index)
+	{
+		Element* Temp;
+		if (index > size)return;
+		if (index == 0)return pop_front();
+		if (index == size) return pop_back();
+		if (index < size / 2)
+		{
+			Temp = Head;
+			for (int i = 0; i < index; i++)
+			{
+				Temp = Temp->pNext;
+			}
+		}
+		else
+		{
+			Temp = Tail;
+			for (int i = 0; i < size-index-1; i++)
+			{
+				Temp = Temp->pPrev;
+			}
+		}
+		Temp->pPrev->pNext = Temp->pNext;
+		Temp->pNext->pPrev = Temp->pPrev;
+		delete Temp;
 		size--;
 	}
 	void print()const
@@ -151,4 +210,12 @@ void main()
 	list.print();
 	list.revers_print();
 	for (int i = 0; i < 100; i++) list.pop_back();
+	int position, value;
+	cout << "¬ведите позицию добавл€емого элемента:"; cin >> position;
+	cout << "¬ведите значение добавл€емого элемента:"; cin >> value;
+	list.insert(position, value);
+	list.print();
+	cout << "¬ведите позицию удал€емого элемента:"; cin >> position;
+	list.erase(position);
+	list.print();
 }
