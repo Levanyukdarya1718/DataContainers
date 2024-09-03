@@ -464,4 +464,22 @@ void main()
 	for (int i : list3)cout << i << tab; cout << endl;
 	Grow(list3);
 	for (int i : list3)cout << i << tab; cout << endl;
+
+	List<double> d_list1 = { 5.5,7.1,19.6,3.89 };
+	for (double i: d_list1)cout << i << tab; cout << endl;
+	/*List<double> d_list2 = { 1.17,2.58,85.6 };
+	List<double> d_list3 = d_list1 + d_list2;
+	for (double i : d_list1)cout << i << tab; cout << endl;
+	for (double i : d_list2)cout << i << tab; cout << endl;
+	for (double i : d_list3)cout << i << tab; cout << endl;*/
+
+	List<std::string> s_list1 = { "в", "лесу","родилась", "елочка"};
+	for (std::string i : s_list1)cout << i << tab; cout << endl;
+	//List<std::string> s_list2 = { "в", "лесу", "она", "росла"};
+	// List<std::string> s_list3 = s_list1 + s_list2; 	
+	//for (const std::string& i : s_list1)cout << i << tab; cout << endl;
+	//for (const std::string& i : s_list2)cout << i << tab; cout << endl;
+	//for (const std::string& i : s_list3) cout << i << tab;cout << endl;
+
+	
 }
