@@ -27,6 +27,7 @@ public:
 	}
 	friend class ForwardList;
 	friend class Iterator;
+	friend class Stack;
 };
 int Element::count = 0;
 class Iterator
@@ -243,12 +244,32 @@ public:
 		//cout << "Общее количество элементов списка: " << Head->count << endl;
 			
 	}
-
+	friend class Stack;
 };
+class Stack : ForwardList
+{
+public:
+	void push(int Data)
+	{
+		push_front(Data);
+	}
+	int pop()
+	{
+		int Data = Head->Data;
+		pop_front();
+		return Data;
+	}
+	int Size()
+	{
+		return size;
+	}
+};
+
+
 //#define BASE_CHECK
 //#define PERFORMANCE_CHECK
 //#define RENGE_BASED_FOR_ARRAY
-#define RENGE_BASED_FOR_LIST
+//#define RENGE_BASED_FOR_LIST
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -323,6 +344,20 @@ void main()
 	}
 	cout << endl;
 #endif // RENGE_BASED_FOR_LIST
+	Stack stack;
+	stack.push(3);
+	stack.push(5);
+	stack.push(8);
+	stack.push(13);
+	stack.push(21);
+	cout << "Size" << stack.Size() << endl;
 
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	cout << "Size" << stack.Size() << endl;
+	
 	
 }
