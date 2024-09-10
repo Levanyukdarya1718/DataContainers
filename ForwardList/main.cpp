@@ -310,7 +310,7 @@ void main()
 	//Range(диапазон) в данном случае понимается как контейнер 
 	for (int i : arr)
 	{
-		cout << i << tab;
+		cout << i << tab; 
 	}
 	cout << endl;
 #endif // RENGE_BASED_FOR_ARRAY
