@@ -352,7 +352,7 @@ void main()
 	stack.push(21);
 	cout << "Size" << stack.Size() << endl;
 
-	stack.pop();
+	stack.pop(); 
 	stack.pop();
 	stack.pop();
 	stack.pop();
